@@ -16,7 +16,6 @@ export class AdicionaPage implements OnInit {
   produtoForm: FormGroup;
   produto: Produto;
   produtoID: string;
-  editable: boolean = false;
   
   constructor(private formBuilder: FormBuilder, 
               private route: ActivatedRoute, 
@@ -70,8 +69,11 @@ export class AdicionaPage implements OnInit {
   ionViewWillEnter() {
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
+      this.produtoID = id;
       this.prdFBService.selectProdutoById(id).subscribe(
-        (produtoDB: Produto) => this.loadForm(produtoDB)
+        (produtoDB: Produto) => {
+          this.loadForm(produtoDB);
+        }
       );
     }
   }
@@ -103,6 +105,7 @@ export class AdicionaPage implements OnInit {
     produtoEditado.id = this.produtoID;
 
     this.prdFBService.updateProduto(produtoEditado).then(() => {
+      this.router.navigateByUrl('/');
       this.showToast('Product updated');
     }, err => {
       this.showToast('There was a problem updating your product :(');

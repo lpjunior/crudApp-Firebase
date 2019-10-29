@@ -4,7 +4,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content fullscreen>
-      <form [formGroup] = "produtoForm" (submit)="(editable) ? editProduto() : addProduto()">
+      <form [formGroup] = "produtoForm" (submit)="(produtoID) ? editProduto() : addProduto()">
         <ion-list lines="full" class="ion-no-margin ion-no-padding">
           <ion-item>
             <ion-label position="stacked">Nome <ion-text color="danger">*</ion-text></ion-label>
