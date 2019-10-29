@@ -17,7 +17,7 @@
           <ion-label>
             <h2>{{p.nm_produto}}</h2>
             <h3>{{p.qnt_produto}}</h3>
-            <p>R$ {{p.preco_produto}}</p>
+            <p>R$ {{p.preco_produto.toFixed(2)}}</p>
           </ion-label>
           <ion-button [routerLink]="['/tabs/editar', p.id]" color="success" size="small">
             editar

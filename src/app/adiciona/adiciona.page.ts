@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Produto } from '../model/Produto';
-import { ProdutoService } from '../services/produto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProdutoFirebaseService } from '../services/produto-firebase.service';
 import { ToastController } from '@ionic/angular';
@@ -13,9 +12,9 @@ import { ToastController } from '@ionic/angular';
 })
 export class AdicionaPage implements OnInit {
 
-  produtoForm: FormGroup;
-  produto: Produto;
-  produtoID: string;
+  private produtoForm: FormGroup;
+  private produto: Produto;
+  private produtoID: string;
   
   constructor(private formBuilder: FormBuilder, 
               private route: ActivatedRoute, 
